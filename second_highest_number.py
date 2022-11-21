@@ -1,6 +1,8 @@
 import unittest
+import logging
 
 def second_highest_number(nums):
+    logging.debug('This is a debug message')
     None
 
 class SimpleTestCase(unittest.TestCase):
