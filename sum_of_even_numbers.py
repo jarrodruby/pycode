@@ -17,7 +17,7 @@ class SimpleTestCase(unittest.TestCase):
         assert sum_of_even_numbers([1, 2, 3, 4, '6']) == 6
 
     def testE(self):
-        assert sum_of_even_numbers([1, '2', 3, 4, '6', 4]) == 3
+        assert sum_of_even_numbers([1, '2', 3, 4, '6', 4]) == 8
 
 
 if __name__ == "__main__":
