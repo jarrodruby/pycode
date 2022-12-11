@@ -1,14 +1,45 @@
 import unittest
 
 def remove_non_integers(nums):
-    filtered = filter(lambda num: isinstance(num, int), nums)
-    return list(filtered)
+    # In-built `filter` function
+    # https://www.programiz.com/python-programming/methods/built-in/filter
+    # N.B. It returns a Tuple
 
-def sort_list_of_integers(nums):
-    return sorted(nums)
+    # Keyword lambda (annoymous function)
+    # https://www.w3schools.com/python/python_lambda.asp
+    filtered_as_tuple = filter(lambda num: isinstance(num, int), nums)
+
+    # In-built `list` function
+    # https: // www.programiz.com / python - programming / methods / built - in / list
+    filtered_as_list = list(filtered_as_tuple)
+
+    # Side notes (not essiential)
+    # Difference between a tuple and a list
+    # https: // www.programiz.com / python - programming / list - vs - tuples
+
+    return filtered_as_list
+
+def sort_list_of_integers(unsorted_nums):
+    # In-built `sorted` function
+    # https: // www.programiz.com / python - programming / methods / built - in / sorted
+    sorted_nums = sorted(unsorted_nums)
+
+    return sorted_nums
 
 def second_last_element_of_list(nums):
-    return nums[len(nums) - 2]
+    # In-built `len` function
+    # https://www.programiz.com/python-programming/methods/built-in/len
+    list_size = len(nums)
+
+    # Arithmetic operator
+    # https://www.geeksforgeeks.org/python-arithmetic-operators/
+    index_of_second_last_element = list_size - 2
+
+    # Access element from list
+    # https://www.w3schools.com/python/gloss_python_access_list_items.asp
+    result = nums[index_of_second_last_element]
+
+    return result
 
 def second_highest_number(nums):
     if len(nums) < 2:
@@ -23,51 +54,67 @@ class SimpleTestCase(unittest.TestCase):
     # 1.
     #### remove_non_integers ####
     def test_remove_non_integers_1(self):
-        assert remove_non_integers([1, 0, 2]) == [1, 0, 2]
+        expected = [1, 0, 2]
+        result = remove_non_integers([1, 0, 2])
+        self.assertEqual(result, expected)
 
     def test_remove_non_integers_2(self):
-        assert remove_non_integers([1, 'a', 0, 2]) == [1, 0, 2]
+        expected = [1, 0, 2]
+        result = remove_non_integers([1, 'a', 0, 2])
+        self.assertEqual(result, expected)
 
     # 2.
     #### sort_list_of_integers ####
     def test_sort_list_of_integers_1(self):
-        assert sort_list_of_integers([1, 0, 2]) == [0, 1, 2]
+        expected = [0, 1, 2]
+        result = sort_list_of_integers([1, 0, 2])
+        self.assertEqual(result, expected)
 
     def test_sort_list_of_integers_2(self):
-        assert sort_list_of_integers([11, 0, -2]) == [-2, 0, 11]
+        result = sort_list_of_integers([11, 0, -2])
+        expected = [-2, 0, 11]
+        self.assertEqual(result, expected)
 
     # 3.
     #### second_last_element_of_list ####
     def test_second_last_element_of_list_1(self):
+        expected = 8
         result = second_last_element_of_list([0, 1, 2, 3, 8, 55])
-        assert result == 8
+        self.assertEqual(result, expected)
 
     def test_second_last_element_of_list_2(self):
+        expected = 11
         result = second_last_element_of_list([11, 11, 33])
-        assert result == 11
+        self.assertEqual(result, expected)
 
     # 4.
     #### second_highest_number ####
     def test_second_highest_number_1(self):
+        expected = 1
         result = second_highest_number([1, 0, 2])
-        assert result == 1
+        self.assertEqual(result, expected)
 
     def test_second_highest_number_2(self):
-        assert second_highest_number([5]) == None
+        expected = None
+        result = second_highest_number([5])
+        self.assertEqual(result, expected)
 
     def test_second_highest_number_3(self):
+        expected = 46597384
         result = second_highest_number([46597384, 46597385])
-        assert result == 46597384
+        self.assertEqual(result, expected)
 
     def test_second_highest_number_4(self):
+        expected = 3
         result = second_highest_number([1, 2, 3, 4, '6'])
-        assert result == 3
+        self.assertEqual(result, expected)
 
     def test_second_highest_number_5(self):
+        expected = 3
         result = second_highest_number([1, '2', 3, 4, '6'])
-        print(result)
-        assert result == 3
+        self.assertEqual(result, expected)
 
 
 if __name__ == "__main__":
     unittest.main()
+    
